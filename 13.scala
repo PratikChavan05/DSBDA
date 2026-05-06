@@ -1,3 +1,5 @@
+:paste
+
 val text = List(
 "Apache Spark is awesome",
 "Spark makes big data processing easy",
@@ -17,7 +19,7 @@ val rdd = sc.parallelize(text)
 val counts = rdd
 .flatMap(line => line.split(" "))
 .map(word => (word, 1))
-.reduceByKey(_ + _)
+.reduceByKey(_+_)
 
 // Step 4 - Print output
 counts.collect().foreach(println)
