@@ -1,26 +1,22 @@
+:paste
+def sort(arr : Array[Int]):Array[Int]={
+  val n = arr.length
+
+  for(i<- 0 until n){
+    for (j<- 0 until n-i-1){
+      if(arr(j)>arr(j+1)){
+        val temp = arr(j)
+        arr(j) = arr(j+1)
+        arr(j+1) = temp
+      }
+    }
+  }
+  arr
+}
 
 
-:paste 
+val arr = Array(9 ,5,3,7,3,1)
 
+val sorted = sort(arr)
 
-val text = List(
-    "Apache Spark is awesome",
-  "Spark makes big data processing easy",
-  "Learning Spark with Scala is fun",
-  "Scala is a powerful programming language",
-  "Big data processing is important",
-  "Apache Spark runs on Java and Scala",
-  "Data science uses Spark for processing",
-  "Spark is fast and easy to learn"
-
-)
-
-val rdd = sc.parallelize(text)
-
-
-val counts = rdd
-    .flatMap(line=>line.split(" "))
-    .map(word=>(word,1))
-    .reduceByKey(_ + _)
-
-counts.collect().foreach(println)
+println("sorted arr:" + sorted.mkString(" ") )
